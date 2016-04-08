@@ -1,0 +1,20 @@
+Given a set of positive seed pairs and negative seed pairs, this program aims at training a CNN model (one convolutional layer, one max-pooling layer and one fully-connected layer) to grade all candidate pairs.
+
+1. The codes relies on the Eigen package, which is provided in the folder. To compile the codes, just use the makefile.
+
+2. (1) Given a entity pair, the extract-data.cpp will extract all sentences containing the two entities.
+   (2) NeuNet.h NeuNet.cpp main.cpp are the codes of the CNN model.
+   (3) rank-neu.py will sort all candidate pairs according to their scores. 
+
+3. To train the CNN model, you may use the script “train.sh”. The first several lines of “train.sh” should be modified.
+    data_file: the text file with one sentence per line.
+    vector_file: the pre-trained word and entity embedding file, you may use word2vec or LINE to train embeddings on the data file.
+    model_file: the output model file.
+    seed_pos_file: the file of positive seed pairs with one pair per line.
+    seed_neg_file: the file of negative seed pairs with one pair per line.
+
+4. To predict the label of candidate pairs, you may use the script “predict.sh”. The first several lines of “predict.sh” should be modified.
+    data_file: the text file with one sentence per line.
+    vector_file: the pre-trained word and entity embedding file, you may use word2vec or LINE to train embeddings on the data file.
+    model_file: the input model file.
+    candidate_file: the file of candidate pairs with one pair per line.
